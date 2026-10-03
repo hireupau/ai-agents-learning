@@ -6,6 +6,7 @@ Reference: https://github.com/hireupau/architecture-examples
 ## Setup
 
 ```bash
+cd strands-demo
 bun install
 cp .env.example .env   # fill in a provider
 bun run dev
@@ -15,7 +16,7 @@ bun run dev
 
 Tick off as you go; keep notes per step in `notes/`.
 
-- [ ] 1. Single agent + local tool (`strands-demo`)
+- [x] 1. Single agent + local tool (`strands-base`)
 - [ ] 2. MCP tool over stdio
 - [ ] 3. Structured output + two-agent pipeline
 - [ ] 4. Observability (`strands-langfuse-demo`)
