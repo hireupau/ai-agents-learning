@@ -17,7 +17,7 @@ bun run dev
 Tick off as you go; keep notes per step in `notes/`.
 
 - [x] 1. Single agent + local tool (`strands-base`)
-- [ ] 2. MCP tool over stdio
+- [ ] 2. MCP tool over stdio (`strands-mcp-stdio`)
 - [ ] 3. Structured output + two-agent pipeline
 - [ ] 4. Observability (`strands-langfuse-demo`)
 - [ ] 5. JWT-as-tool-argument auth (`strands-booking-auth`)
