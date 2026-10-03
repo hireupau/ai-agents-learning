@@ -1,6 +1,6 @@
 # AI-Agents-Learning
 
-Hand-written practice project for learning the Strands Agents SDK (TypeScript).
+Practice project for learning the Strands Agents SDK (TypeScript).
 Reference: https://github.com/hireupau/architecture-examples
 
 ## Setup
