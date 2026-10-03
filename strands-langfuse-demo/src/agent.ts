@@ -1,3 +1,5 @@
+// Must stay the first import: registers the OTel provider before any agent is created.
+import {langfuseSpanProcessor} from "./instrumentation.ts";
 import {resolveAgentType} from "./providers.ts";
 import {createPipeline} from "./pipeline.ts";
 import {startRepl} from "./console/repl.ts";
@@ -14,5 +16,9 @@ await startRepl(consoleIO, {
     if (!result.ok) return io.write(result.error)
     await io.write(result.value.message)
   },
-  onExit: () => pipeline.close(),
+  onExit: async () => {
+    await pipeline.close()
+    // Flush pending spans, otherwise the last traces of a short-lived process are lost.
+    await langfuseSpanProcessor.forceFlush()
+  },
 })
