@@ -12,8 +12,7 @@ await startRepl(consoleIO, {
   onInput: async (input, io) => {
     const result = await pipeline.run(input)
     if (!result.ok) return io.write(result.error)
-    const { letter, word, count } = result.value
-    await io.write(`The letter '${letter}' appears ${count} time(s) in the word '${word}'.`)
+    await io.write(result.value.message)
   },
   onExit: () => pipeline.close(),
 })
