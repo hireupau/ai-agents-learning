@@ -18,7 +18,7 @@ Tick off as you go; keep notes per step in `notes/`.
 
 - [x] 1. Single agent + local tool (`strands-base`)
 - [x] 2. MCP tool over stdio (`strands-mcp-stdio`)
-- [ ] 3. Structured output + two-agent pipeline
+- [x] 3. Structured output + two-agent pipeline
 - [ ] 4. Observability (`strands-langfuse-demo`)
 - [ ] 5. JWT-as-tool-argument auth (`strands-booking-auth`)
 - [ ] 6. Sessions + credential injection (`strands-helpdesk-memory`)
