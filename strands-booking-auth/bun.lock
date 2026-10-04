@@ -11,6 +11,7 @@
         "@opentelemetry/api": "^1.9.1",
         "@opentelemetry/sdk-node": "^0.222.0",
         "@strands-agents/sdk": "^1.19.0",
+        "jose": "^6.2.12",
         "minimist": "^1.2.8",
         "openai": "^6.49.0",
         "otel-bun": "^0.3.0",

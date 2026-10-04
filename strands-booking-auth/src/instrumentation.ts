@@ -13,8 +13,22 @@ import {LangfuseSpanProcessor} from "@langfuse/otel";
 
 ensureContextManager()
 
+// The JWT travels through the model context by design (ADR 0001), so it appears in tool inputs/outputs and
+// model messages. Redact it before export so traces never hold a replayable credential (valid for 15 minutes).
+const JWT_PATTERN = /eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*/g
+
+export function redactJwts(data: unknown): unknown {
+  if (typeof data === 'string') return data.replace(JWT_PATTERN, '[REDACTED_JWT]')
+  if (Array.isArray(data)) return data.map(redactJwts)
+  if (data !== null && typeof data === 'object') {
+    return Object.fromEntries(Object.entries(data).map(([k, v]) => [k, redactJwts(v)]))
+  }
+  return data
+}
+
 export const langfuseSpanProcessor = new LangfuseSpanProcessor({
   environment: process.env.LANGFUSE_TRACING_ENVIRONMENT,
+  mask: ({data}) => redactJwts(data),
 })
 
 export const sdk = new NodeSDK({spanProcessors: [langfuseSpanProcessor]})
