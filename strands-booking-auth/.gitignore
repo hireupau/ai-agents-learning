@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+logs
+*.log
+.env
+.env.*.local
+.idea
+.DS_Store
+*.db
